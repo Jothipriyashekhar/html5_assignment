@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function clickCounterlocal() {
+    if(typeof(Storage) !== "undefined") {
+        if (localStorage.clickcountlocal) {
+            localStorage.clickcountlocal = Number(localStorage.clickcountlocal)+1;
+        } else {
+            localStorage.clickcountlocal = 1;
+        }
+        document.getElementById("result").innerHTML = "You have clicked the button " + localStorage.clickcountlocal + " time(s).";
+    } else {
+        document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+    }
+}
+
+function clickCounter() {
+    if(typeof(Storage) !== "undefined") {
+        if (sessionStorage.clickcount) {
+            sessionStorage.clickcount = Number(sessionStorage.clickcount)+1;
+        } else {
+            sessionStorage.clickcount = 1;
+        }
+        document.getElementById("result1").innerHTML = "You have clicked the button " + sessionStorage.clickcount + " time(s) in this session.";
+    } else {
+        document.getElementById("result1").innerHTML = "Sorry, your browser does not support web storage...";
+    }
+}
+</script>
+</head>
+<body>
+<p><button onclick="clickCounterlocal()" type="button">local storage</button></p>
+<p><button onclick="clickCounter()" type="button">session storage</button></p>
+<div id="result"></div>
+<p>Click the local storage button to see the local counter increase.</p>
+<div id="result1"></div>
+<p>Click the session storage button to see the session counter increase.</p>
+</body>
+</html>
+
